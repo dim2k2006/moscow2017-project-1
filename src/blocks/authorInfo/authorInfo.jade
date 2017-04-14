@@ -1,0 +1,13 @@
+mixin authorInfo
+    +b('div').authorInfo
+        +e('div').wrapper
+            +e('div').content
+                +e('div').col(class="authorInfo__col_1")
+                    +e('div').preview
+                        +e('img')(src="/images/vis-author-1.jpg")
+
+                +e('div').col(class="authorInfo__col_2")
+                    +e('div').title!= "Антон Тен"
+
+                    +e('div').text
+                        +e('p')!= "В Яндексе с 2014 года. Ведущий дизайнер продукта в сервисах Переводчик, Расписания и Видео."

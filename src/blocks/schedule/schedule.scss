@@ -1,0 +1,24 @@
+$schedule: '.schedule';
+
+#{$schedule} {
+    position: relative;
+    display: block;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    &__wrapper {
+        position: relative;
+        display: block;
+    }
+
+    &__header {
+        position: relative;
+        display: block;
+    }
+
+    &__content {
+        position: relative;
+        display: block;
+    }
+}

@@ -1,0 +1,10 @@
+include ../scheduleList/scheduleList
+
+mixin schedule
+    +b('section').schedule
+        +e('div').wrapper
+            +e('div').header
+
+
+            +e('div').content
+                +scheduleList

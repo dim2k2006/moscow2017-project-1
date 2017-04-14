@@ -1,0 +1,65 @@
+// Font-family
+$font-family-default: Helvetica, Arial, sans-serif;
+
+// Font-size
+$font-size-prelittle: 8px;
+$font-size-little: 10px;
+$font-size-smallest: 11px;
+$font-size-extrasmall: 12px;
+$font-size-smaller: 13px;
+$font-size-small: 14px;
+$font-size-predefault: 15px;
+$font-size-default: 16px;
+$font-size-premedium: 18px;
+$font-size-medium: 20px;
+$font-size-mediumplus: 22px;
+$font-size-prelarge: 24px;
+$font-size-semilarge: 26px;
+$font-size-large: 36px;
+$font-size-largeplus: 50px;
+$font-size-huge: 72px;
+$font-size-extrahuge: 100px;
+
+// Line-height
+$line-height-prelittle: 1;
+$line-height-little: 1.2;
+$line-height-presmall: 1.3;
+$line-height-small: 1.4;
+$line-height-medium: 1.5;
+$line-height-large: 1.6;
+$line-height-larger: 1.7;
+$line-height-afterlarge: 1.8;
+
+// Color
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-whisper: #F6F7FA;
+$color-mercury: #E8E8E8;
+$color-cobalt: #1177DD;
+$color-red: #FF0000;
+$color-iron: #E1E4E7;
+$color-eucalyptus: #26A65B;
+$color-bright-sun: #FECD2F;
+$color-oxford-blue: #394352;
+$color-dodger-blue: #19B5FE;
+$color-pomegranate: #F22613;
+$color-shamrock: #2ECC71;
+
+// global
+$minWidth: 320px;
+
+// Breakpoints
+$breakpoints: (
+    'small' : (max-width: 480px),
+    'medium': (max-width: 640px),
+    'prebig': (max-width: 767px),
+    'big': (max-width: 800px),
+    'intermediary': (max-width: 960px),
+    'increased': (max-width: 1024px),
+    'preincreased': (max-width: 1040px),
+    'huge': (max-width: 1260px),
+    'ultrahuge': (max-width: 1400px),
+    'premonsterhuge': (max-width: 1717px),
+    'monsterhuge': (max-width: 2000px)
+);
+

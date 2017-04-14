@@ -1,0 +1,11 @@
+mixin formInput(data)
+    +b('div').formInput
+        +e('div').wrapper
+            +e('div').header
+                +e('label').label(for= data.id)!= data.label
+
+            +e('div').content
+                if data.type === 'date'
+                    +e('input').input(type="date", name= data.name, id= data.id, min= data.min, max= data.max, value= data.value)
+                else
+                    +e('input').input(type="text", name= data.name, id= data.id, value= data.value)

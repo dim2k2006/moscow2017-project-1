@@ -1,0 +1,35 @@
+$scheduleList: '.scheduleList';
+
+#{$scheduleList} {
+    position: relative;
+    display: block;
+
+    &__wrapper {
+        position: relative;
+        display: block;
+    }
+
+    &__content {
+        position: relative;
+        display: block;
+    }
+
+    &__list {
+        @include clearfix;
+    }
+
+    &__list,
+    &__item {
+        @include list-reset;
+    }
+
+    &__item {
+        position: relative;
+        display: block;
+        margin-bottom: 15px;
+
+        @include f-last(1) {
+            margin-bottom: 0;
+        }
+    }
+}

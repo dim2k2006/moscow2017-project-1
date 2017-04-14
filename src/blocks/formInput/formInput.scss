@@ -1,0 +1,30 @@
+$formInput: '.formInput';
+
+#{$formInput} {
+    position: relative;
+    display: block;
+
+    &__wrapper {
+        position: relative;
+        display: block;
+    }
+
+    &__header {
+        position: relative;
+        display: block;
+    }
+
+    &__label {
+        position: relative;
+        display: block;
+        margin-bottom: .2em;
+        font-size: $font-size-small;
+        line-height: $line-height-prelittle;
+        color: $color-black;
+    }
+
+    &__content {
+        position: relative;
+        display: block;
+    }
+}

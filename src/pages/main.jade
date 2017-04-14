@@ -1,0 +1,11 @@
+extends ../jade/layout
+
+block head
+    - var pageDescription="Расписание лекций проекта «Мобилизация»";
+    - var pageKeywords="Расписание лекций проекта «Мобилизация»";
+    - var pageTitle="Расписание лекций проекта «Мобилизация»";
+
+block content
+    include ../blocks/schedule/schedule
+
+    +schedule

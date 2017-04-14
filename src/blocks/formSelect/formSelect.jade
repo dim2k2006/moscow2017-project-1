@@ -1,0 +1,13 @@
+mixin formSelect(data)
+    +b('div').formSelect
+        +e('div').wrapper
+            +e('div').header
+                +e('label').label(for= data.id)!= data.label
+
+            +e('div').content
+                +e('select').select(name= data.name, id= data.id)
+                    each item in data.list
+                        if item.isActive
+                            +e('option')(value= item.value, selected)!= item.text
+                        else
+                            +e('option')(value= item.value)!= item.text
