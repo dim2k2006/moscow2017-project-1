@@ -18,7 +18,7 @@ let data = {
 
 gulp.task('markup', () => {
     return gulp
-        .src(`${settings.baseSrc}/**/*.jade`)
+        .src([settings.baseSrc + '/**/*.jade', '!' + settings.baseSrc + '/bower_components/**/*.jade'])
         .pipe(plumber({errorHandler: errorHandler}))
         .pipe(cached('jade'))
         .pipe(gulpif(global.watch, inheritance({basedir: settings.baseSrc})))
