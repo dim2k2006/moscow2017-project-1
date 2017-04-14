@@ -76,7 +76,7 @@
     },
     "vendorScripts": {
         "path": [
-
+            "./src/bower_components/shri-2017-project-2/static/scripts/library.min.js"
         ]
     }
 }
