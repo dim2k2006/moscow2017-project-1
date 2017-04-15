@@ -1,10 +1,12 @@
+include ../scheduleFilter/scheduleFilter
 include ../scheduleList/scheduleList
 
 mixin schedule
     +b('section').schedule
         +e('div').wrapper
-            +e('div').header
-
-
             +e('div').content
-                +scheduleList
+                +e('div').col(class="schedule__col_1")
+                    +scheduleFilter
+
+                +e('div').col(class="schedule__col_2")
+                    +scheduleList

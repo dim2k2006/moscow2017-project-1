@@ -3,16 +3,11 @@ $schedule: '.schedule';
 #{$schedule} {
     position: relative;
     display: block;
-    max-width: 860px;
+    max-width: 1170px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 20px;
 
     &__wrapper {
-        position: relative;
-        display: block;
-    }
-
-    &__header {
         position: relative;
         display: block;
     }
@@ -20,5 +15,22 @@ $schedule: '.schedule';
     &__content {
         position: relative;
         display: block;
+        @include clearfix;
+    }
+
+    &__col {
+        position: relative;
+        display: block;
+        float: left;
+
+        &#{$schedule}__col_1 {
+            width: 270px;
+            height: 10px;
+            margin-right: 20px;
+        }
+
+        &#{$schedule}__col_2 {
+            width: calc(100% - 290px);
+        }
     }
 }

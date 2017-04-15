@@ -1,0 +1,55 @@
+$scheduleFilter: '.scheduleFilter';
+
+#{$scheduleFilter} {
+    position: relative;
+    display: block;
+    border: 1px solid $color-iron;
+    background-color: $color-white;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba($color-black, 0.1);
+
+    &__wrapper {
+        position: relative;
+        display: block;
+    }
+
+    &__header {
+        position: relative;
+        display: block;
+        padding: 15px 20px;
+        background-color: $color-mercury;
+    }
+
+    &__title {
+        position: relative;
+        display: block;
+        font-weight: 600;
+        font-size: $font-size-predefault;
+        line-height: $line-height-prelittle;
+    }
+
+    &__content {
+        position: relative;
+        display: block;
+        padding: 15px 20px;
+    }
+
+    &__list {
+        @include clearfix;
+    }
+
+    &__list,
+    &__item {
+        @include list-reset;
+    }
+
+    &__item {
+        position: relative;
+        display: block;
+        margin-bottom: 20px;
+
+        @include f-last(1) {
+            margin-bottom: 0;
+        }
+    }
+}
