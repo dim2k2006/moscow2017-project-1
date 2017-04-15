@@ -94,7 +94,24 @@
 
                 var date = new Date(item.date),
                     day = date.getDate(),
-                    month = self.monthNames[date.getMonth()];
+                    month = self.monthNames[date.getMonth()],
+                    school = [],
+                    author = [];
+
+                item.school.forEach(function(item) {
+                    var itemTitle = self.expand([item], {title: 'schools', data: response.schools}, 'title'),
+                        itemId = self.expand([item], {title: 'schools', data: response.schools}, 'id');
+
+                    school.push('<span class="scheduleItem__school__item scheduleItem__school__item_'+ itemId +'">'+ itemTitle +'</span>');
+                });
+
+                item.author.forEach(function(item) {
+                    var itemTitle = self.expand([item], {title: 'authors', data: response.authors}, 'title'),
+                        itemPhoto = self.expand([item], {title: 'authors', data: response.authors}, 'photo'),
+                        itemDescription = self.expand([item], {title: 'authors', data: response.authors}, 'description');
+
+                    author.push('<a class="scheduleItem__author__link modal_trigger" href="#author" title="Посмотреть дополнительную информацию" data-photo="'+ itemPhoto +'" data-title="'+ itemTitle +'" data-description="'+ itemDescription +'">'+ itemTitle +'</a>');
+                });
 
                 element.querySelector('.scheduleItem__day').innerHTML = day;
 
@@ -104,9 +121,9 @@
 
                 element.querySelector('.scheduleItem__title').innerHTML = item.title;
 
-                element.querySelector('.scheduleItem__school').innerHTML = self.expand(item.school, {title: 'schools', data: response.schools}, 'title');
+                element.querySelector('.scheduleItem__school').innerHTML = school.join('');
 
-                element.querySelector('.scheduleItem__author').innerHTML += self.expand(item.author, {title: 'authors', data: response.authors}, 'title');
+                element.querySelector('.scheduleItem__author').innerHTML += author.join(', ');
 
                 element.querySelector('.scheduleItem__audience').innerHTML += self.expand([item.place], {title: 'places', data: response.places}, 'title');
 

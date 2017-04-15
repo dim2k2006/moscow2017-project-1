@@ -21,8 +21,6 @@
          */
         self.setupListener = function() {
             self.body.addEventListener('click', self.router);
-            // self.openButton.addEventListener('click', self.open);
-            // self.closeButton.addEventListener('click', self.close);
         };
 
         /**
@@ -49,7 +47,16 @@
 
         self.open = function(target) {
             var src = target.getAttribute('href'),
-                container = document.querySelector(src);
+                container = document.querySelector(src),
+                photo = target.dataset.photo,
+                title = target.dataset.title,
+                description = target.dataset.description;
+
+            container.querySelector('.authorInfo__preview img').src = photo;
+
+            container.querySelector('.authorInfo__title').innerHTML = title;
+
+            container.querySelector('.authorInfo__text p').innerHTML = description;
 
             self.html.classList.add('modal_state_open');
             container.classList.add('modal_state_open');

@@ -95,27 +95,27 @@ $scheduleItem: '.scheduleItem';
         font-size: $font-size-smaller;
         line-height: $line-height-prelittle;
         @include clearfix;
-
-        span {
-            position: relative;
-            float: left;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            padding: 4px 14px;
-            color: $color-white;
-            border-radius: 20px;
-        }
     }
 
-    &__school_1 {
+    &__school__item {
+        position: relative;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 4px 14px;
+        color: $color-white;
+        border-radius: 20px;
+    }
+
+    &__school__item_0 {
         background-color: $color-red;
     }
 
-    &__school_2 {
+    &__school__item_1 {
         background-color: $color-bright-sun;
     }
 
-    &__school_3 {
+    &__school__item_2 {
         background-color: $color-eucalyptus;
     }
 
