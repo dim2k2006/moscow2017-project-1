@@ -91,7 +91,7 @@ $scheduleItem: '.scheduleItem';
     &__school {
         position: relative;
         display: block;
-        margin-bottom: .4em;
+        margin-bottom: 1em;
         font-size: $font-size-smaller;
         line-height: $line-height-prelittle;
         @include clearfix;
@@ -120,10 +120,11 @@ $scheduleItem: '.scheduleItem';
     }
 
     &__author,
+    &__audience,
     &__place {
         position: relative;
         display: block;
-        margin-bottom: .3em;
+        margin-bottom: .4em;
         font-size: $font-size-predefault;
         line-height: $line-height-presmall;
         color: $color-oxford-blue;
@@ -134,25 +135,6 @@ $scheduleItem: '.scheduleItem';
 
         span {
             opacity: .5;
-        }
-    }
-
-    &__author__list {
-        @include clearfix;
-    }
-
-    &__author__list,
-    &__author__item {
-        @include list-reset;
-    }
-
-    &__author__item {
-        position: relative;
-        display: block;
-        margin-bottom: .3em;
-
-        @include f-last(1) {
-            margin-bottom: 0;
         }
     }
 }
