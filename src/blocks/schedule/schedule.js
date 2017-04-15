@@ -113,6 +113,12 @@
                     author.push('<a class="scheduleItem__author__link modal_trigger" href="#author" title="Посмотреть дополнительную информацию" data-photo="'+ itemPhoto +'" data-title="'+ itemTitle +'" data-description="'+ itemDescription +'">'+ itemTitle +'</a>');
                 });
 
+                if (item.isOver) {
+
+                    element.querySelector('.scheduleItem').classList.add('scheduleItem_state_inactive');
+
+                }
+
                 element.querySelector('.scheduleItem__day').innerHTML = day;
 
                 element.querySelector('.scheduleItem__month').innerHTML = month;
