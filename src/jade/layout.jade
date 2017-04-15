@@ -27,11 +27,13 @@ html(lang="ru")
         <![endif]-->
     body
 
-        +b('main').main
+        +b('div').pageWrapper
 
-            block content
+            +b('main').main
 
-        +modal
+                block content
+
+            +modal
 
         script(type="x-template", id="scheduleItem-template").
             <div class="scheduleItem">

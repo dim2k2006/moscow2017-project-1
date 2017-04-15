@@ -14,49 +14,51 @@
 	</head>
 
 	<body>
-		<main class="main">
-			<section class="schedule">
-				<div class="schedule__wrapper">
-					<div class="schedule__header"></div>
-					<div class="schedule__content">
-						<div class="scheduleList">
-							<div class="scheduleList__wrapper">
-								<div class="scheduleList__content">
-									<ul class="scheduleList__list"></ul>
+		<div class="pageWrapper">
+			<main class="main">
+				<section class="schedule">
+					<div class="schedule__wrapper">
+						<div class="schedule__header"></div>
+						<div class="schedule__content">
+							<div class="scheduleList">
+								<div class="scheduleList__wrapper">
+									<div class="scheduleList__content">
+										<ul class="scheduleList__list"></ul>
+									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			<section id="author" class="modal">
+				<div class="modal__table">
+					<div class="modal__cell">
+						<div class="modal__content">
+							<div class="authorInfo">
+								<div class="authorInfo__wrapper">
+									<div class="authorInfo__content">
+										<div class="authorInfo__col authorInfo__col_1">
+											<div class="authorInfo__preview">
+												<img src="" alt="">
+											</div>
+										</div>
+										<div class="authorInfo__col authorInfo__col_2">
+											<div class="authorInfo__title"></div>
+											<div class="authorInfo__text">
+												<p></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal__footer"><a href="#" class="button modal__link modal_close">Закрыть</a>
 						</div>
 					</div>
 				</div>
 			</section>
-		</main>
-		<section id="author" class="modal">
-			<div class="modal__table">
-				<div class="modal__cell">
-					<div class="modal__content">
-						<div class="authorInfo">
-							<div class="authorInfo__wrapper">
-								<div class="authorInfo__content">
-									<div class="authorInfo__col authorInfo__col_1">
-										<div class="authorInfo__preview">
-											<img src="" alt="">
-										</div>
-									</div>
-									<div class="authorInfo__col authorInfo__col_2">
-										<div class="authorInfo__title"></div>
-										<div class="authorInfo__text">
-											<p></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal__footer"><a href="#" class="button modal__link modal_close">Закрыть</a>
-					</div>
-				</div>
-			</div>
-		</section>
+		</div>
 		<script type="x-template" id="scheduleItem-template">
 			<div class="scheduleItem">
 			    <div class="scheduleItem__wrapper">
