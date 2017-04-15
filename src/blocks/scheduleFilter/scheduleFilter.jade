@@ -1,4 +1,5 @@
 include ../formInput/formInput
+include ../formSelectMultiple/formSelectMultiple
 
 mixin scheduleFilter
     +b('div').scheduleFilter
@@ -29,4 +30,26 @@ mixin scheduleFilter
                             max: '2016-12-31',
                             value: '2016-12-31'
                         })
+
+                    +e('li').item
+                        +formSelectMultiple({
+                            label: 'Школа',
+                            name: 'school',
+                            id: 'school',
+                            list: [
+                                {
+                                    value: 0,
+                                    text: 'Школа разработки интерфейсов'
+                                },
+                                {
+                                    value: 1,
+                                    text: 'Школа мобильной разработки'
+                                },
+                                {
+                                    value: 2,
+                                    text: 'Школа мобильного дизайна'
+                                }
+                            ]
+                        })
+
 

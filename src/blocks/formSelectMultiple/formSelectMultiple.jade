@@ -1,0 +1,23 @@
+mixin formSelectMultiple(data)
+    +b('div').formSelectMultiple(data-list="")
+        +e('div').wrapper
+            +e('div').header
+                +e('label').label(for= data.id)!= data.label
+
+            +e('div').content
+                +e('select').select(name= data.name, id= data.id)
+                    +e('option')(value='')!= ''
+
+                    each item in data.list
+                        +e('option')(value= item.value)!= item.text
+
+            +e('div').footer
+                +e('ul').list
+                    //+e('li').item
+                    //    +e('a').link(href="#")!= "Школа разработки интерфейсов"
+                    //
+                    //+e('li').item
+                    //    +e('a').link(href="#")!= "Школа мобильной разработки"
+                    //
+                    //+e('li').item
+                    //    +e('a').link(href="#")!= "Школа мобильного дизайна"
