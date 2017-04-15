@@ -18,12 +18,50 @@
 			<main class="main">
 				<section class="schedule">
 					<div class="schedule__wrapper">
-						<div class="schedule__header"></div>
 						<div class="schedule__content">
-							<div class="scheduleList">
-								<div class="scheduleList__wrapper">
-									<div class="scheduleList__content">
-										<ul class="scheduleList__list"></ul>
+							<div class="schedule__col schedule__col_1">
+								<div class="scheduleFilter">
+									<div class="scheduleFilter__wrapper">
+										<div class="scheduleFilter__header">
+											<div class="scheduleFilter__title">Фильтр</div>
+										</div>
+										<div class="scheduleFilter__content">
+											<ul class="scheduleFilter__list">
+												<li class="scheduleFilter__item">
+													<div class="formInput">
+														<div class="formInput__wrapper">
+															<div class="formInput__header">
+																<label for="from" class="formInput__label">Начало</label>
+															</div>
+															<div class="formInput__content">
+																<input type="date" name="from" id="from" min="2016-01-01" max="2016-12-31" value="2016-10-01" class="formInput__input">
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="scheduleFilter__item">
+													<div class="formInput">
+														<div class="formInput__wrapper">
+															<div class="formInput__header">
+																<label for="to" class="formInput__label">Конец</label>
+															</div>
+															<div class="formInput__content">
+																<input type="date" name="to" id="to" min="2016-01-01" max="2016-12-31" value="2016-12-31" class="formInput__input">
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="schedule__col schedule__col_2">
+								<div class="scheduleList">
+									<div class="scheduleList__wrapper">
+										<div class="scheduleList__content">
+											<ul class="scheduleList__list"></ul>
+										</div>
 									</div>
 								</div>
 							</div>
