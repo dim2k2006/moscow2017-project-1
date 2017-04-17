@@ -19,6 +19,7 @@
         self.getValue = '';
         self.container = document.querySelector('.schedule');
         self.content = document.querySelector('.scheduleList__content');
+        self.burger = document.querySelector('.schedule__burger');
         self.schoolSelect = document.querySelector('.formSelectMultiple__select[name="school"]');
         self.authorSelect = document.querySelector('.formSelectMultiple__select[name="author"]');
         self.dateFromInput = document.querySelector('.formInput__input[name="from"]');
@@ -50,6 +51,25 @@
             self.dateFromInput.addEventListener('change', self.getData);
             self.dateToInput.addEventListener('change', self.getData);
             self.selectMultiple.forEach(function(item) {item.addEventListener('render', self.getData)});
+            self.burger.addEventListener('click', self.showFilter);
+        };
+
+        /**
+         * Show filter container
+         * @param {Object} event
+         */
+        self.showFilter = function(event) {
+            event.preventDefault();
+
+            if (self.container.classList.contains('schedule_state_filter')) {
+
+                self.container.classList.remove('schedule_state_filter');
+
+            } else {
+
+                self.container.classList.add('schedule_state_filter');
+
+            }
         };
 
         /**

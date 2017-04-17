@@ -14,6 +14,30 @@ $schedule: '.schedule';
         padding-right: 15px;
     }
 
+    &#{$schedule}_state_filter {
+        #{$schedule} {
+            &__col {
+                &#{$schedule}__col_1 {
+                    display: block;
+                }
+            }
+
+            &__burger__line {
+                &:nth-child(1) {
+                    transform: translateY(0) rotate(45deg);
+                }
+
+                &:nth-child(2) {
+                    transform: scale(0.1, 1);
+                }
+
+                &:nth-child(3) {
+                    transform: translateY(0) rotate(-45deg);
+                }
+            }
+        }
+    }
+
     &__wrapper {
         position: relative;
         display: block;
@@ -77,7 +101,6 @@ $schedule: '.schedule';
         right: 0;
         color: $color-black;
         text-decoration: none;
-        //background-color: red;
 
         &:hover {
             color: $color-black;
@@ -130,7 +153,6 @@ $schedule: '.schedule';
     }
 
     &__col {
-        position: relative;
         display: block;
         float: left;
 
@@ -140,7 +162,15 @@ $schedule: '.schedule';
             margin-right: 20px;
 
             @include respond-to('big') {
+                position: fixed;
                 display: none;
+                width: 100%;
+                height: calc(100% - 40px);
+                top: 40px;
+                left: 0;
+                background-color: $color-white;
+                overflow: auto;
+                z-index: 20;
             }
         }
 
