@@ -8,14 +8,18 @@ mixin schedule
                 +e('div').title
                     +e('h1')!= "Расписание <span>лекций</span>"
 
-                +e('a').burger(href="#")
+                +e('a').arrow(href="#", class="schedule__trigger")
+                    +e('div').arrow__wrapper
+                        +e('div').arrow__icon
+
+                        +e('div').arrow__text
+                            +e('span')!= ""
+
+                            != "лекций"
+
+                +e('a').burger(href="#", class="schedule__trigger")
                     +e('div').burger__wrapper
                         +e('div').burger__icon
-                            +e('div').burger__line
-
-                            +e('div').burger__line
-
-                            +e('div').burger__line
 
             +e('div').content
                 +e('div').col(class="schedule__col_1")

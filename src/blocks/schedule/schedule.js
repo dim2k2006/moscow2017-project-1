@@ -19,7 +19,7 @@
         self.getValue = '';
         self.container = document.querySelector('.schedule');
         self.content = document.querySelector('.scheduleList__content');
-        self.burger = document.querySelector('.schedule__burger');
+        self.trigger = document.querySelectorAll('.schedule__trigger');
         self.schoolSelect = document.querySelector('.formSelectMultiple__select[name="school"]');
         self.authorSelect = document.querySelector('.formSelectMultiple__select[name="author"]');
         self.dateFromInput = document.querySelector('.formInput__input[name="from"]');
@@ -51,7 +51,7 @@
             self.dateFromInput.addEventListener('change', self.getData);
             self.dateToInput.addEventListener('change', self.getData);
             self.selectMultiple.forEach(function(item) {item.addEventListener('render', self.getData)});
-            self.burger.addEventListener('click', self.showFilter);
+            self.trigger.forEach(function(item) {item.addEventListener('click', self.showFilter)});
         };
 
         /**
