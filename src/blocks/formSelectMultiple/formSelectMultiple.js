@@ -19,31 +19,55 @@
          * Add event listeners
          */
         self.setupListener = function() {
-            self.content.addEventListener('change', self.handleChange);
-            self.footer.addEventListener('click', self.handleClick);
+            self.body.addEventListener('change', self.handleChange);
+            self.body.addEventListener('click', self.handleClick);
         };
 
         /**
          * Handle change event
          */
         self.handleChange = function() {
-            var container = this.closest('.formSelectMultiple'),
-                select = container.querySelector('.formSelectMultiple__select'),
-                selectedValue = select.value,
-                initialList = container.dataset.list ? JSON.parse(container.dataset.list) : [],
-                options = [].slice.call(select.querySelectorAll('option')),
-                selectList = [],
-                resultList = [];
+            var target = event.target;
 
-            if (!container.classList.contains('formSelectMultiple_state_inited')) {
+            if (target.classList.contains('formSelectMultiple__select')) {
 
-                [].slice.call(select.querySelectorAll('option')).forEach(function(item) {
+                var container = target.closest('.formSelectMultiple'),
+                    select = container.querySelector('.formSelectMultiple__select'),
+                    selectedValue = select.value,
+                    initialList = container.dataset.list ? JSON.parse(container.dataset.list) : [],
+                    options = [].slice.call(select.querySelectorAll('option')),
+                    selectList = [],
+                    resultList = [];
+
+                if (!container.classList.contains('formSelectMultiple_state_inited')) {
+
+                    [].slice.call(select.querySelectorAll('option')).forEach(function(item) {
+                        var value = item.value,
+                            text = item.innerHTML;
+
+                        if (value && text) {
+
+                            initialList.push({
+                                value: value,
+                                text: text
+                            });
+
+                        }
+                    });
+
+                    container.dataset.list = JSON.stringify(initialList);
+
+                    container.classList.add('formSelectMultiple_state_inited');
+
+                }
+
+                options.forEach(function(item) {
                     var value = item.value,
                         text = item.innerHTML;
 
                     if (value && text) {
 
-                        initialList.push({
+                        selectList.push({
                             value: value,
                             text: text
                         });
@@ -51,43 +75,25 @@
                     }
                 });
 
-                container.dataset.list = JSON.stringify(initialList);
+                selectList = selectList.filter(function(item) {
+                    return item.value !== selectedValue;
+                });
 
-                container.classList.add('formSelectMultiple_state_inited');
+                selectList.forEach(function(selectItem) {
+                    initialList.forEach(function(initialItem, index) {
+                        if (initialItem.value === selectItem.value) {
+
+                            initialList.splice(index, 1);
+
+                        }
+                    });
+                });
+
+                resultList = initialList;
+
+                self.render(container, selectList, resultList);
 
             }
-
-            options.forEach(function(item) {
-                var value = item.value,
-                    text = item.innerHTML;
-
-                if (value && text) {
-
-                    selectList.push({
-                        value: value,
-                        text: text
-                    });
-
-                }
-            });
-
-            selectList = selectList.filter(function(item) {
-                return item.value !== selectedValue;
-            });
-
-            selectList.forEach(function(selectItem) {
-                initialList.forEach(function(initialItem, index) {
-                    if (initialItem.value === selectItem.value) {
-
-                        initialList.splice(index, 1);
-
-                    }
-                });
-            });
-
-            resultList = initialList;
-
-            self.render(container, selectList, resultList);
         };
 
         /**
@@ -95,41 +101,46 @@
          * @param {Object} event
          */
         self.handleClick = function(event) {
-            event.preventDefault();
+            var target = event.target;
 
-            var container = this.closest('.formSelectMultiple'),
-                target = event.target,
-                selectedValue = target.getAttribute('href'),
-                initialList = container.dataset.list ? JSON.parse(container.dataset.list) : [],
-                links = [].slice.call(container.querySelectorAll('a')),
-                selectList = [],
-                resultList = [];
+            if (target.classList.contains('formSelectMultiple__link')) {
 
-            resultList = links.map(function(item) {
-                var value = item.getAttribute('href'),
-                    text = item.innerHTML;
+                event.preventDefault();
 
-                return {
-                    value: value,
-                    text: text
-                }
-            }).filter(function(item) {
-                return item.value !== selectedValue;
-            });
+                var container = target.closest('.formSelectMultiple'),
+                    selectedValue = target.getAttribute('href'),
+                    initialList = container.dataset.list ? JSON.parse(container.dataset.list) : [],
+                    links = [].slice.call(container.querySelectorAll('a')),
+                    selectList = [],
+                    resultList = [];
 
-            resultList.forEach(function(resultItem) {
-                initialList.forEach(function(initialItem, index) {
-                    if (initialItem.value === resultItem.value) {
+                resultList = links.map(function(item) {
+                    var value = item.getAttribute('href'),
+                        text = item.innerHTML;
 
-                        initialList.splice(index, 1);
-
+                    return {
+                        value: value,
+                        text: text
                     }
+                }).filter(function(item) {
+                    return item.value !== selectedValue;
                 });
-            });
 
-            selectList = initialList;
+                resultList.forEach(function(resultItem) {
+                    initialList.forEach(function(initialItem, index) {
+                        if (initialItem.value === resultItem.value) {
 
-            self.render(container, selectList, resultList);
+                            initialList.splice(index, 1);
+
+                        }
+                    });
+                });
+
+                selectList = initialList;
+
+                self.render(container, selectList, resultList);
+
+            }
         };
 
         /**

@@ -52,4 +52,24 @@ mixin scheduleFilter
                             ]
                         })
 
+                    +e('li').item
+                        +formSelectMultiple({
+                            label: 'Лектор',
+                            name: 'author',
+                            id: 'author',
+                            list: [
+                                {
+                                    value: 0,
+                                    text: 'Лектор 1'
+                                },
+                                {
+                                    value: 1,
+                                    text: 'Лектор 2'
+                                },
+                                {
+                                    value: 2,
+                                    text: 'Лектор 3'
+                                }
+                            ]
+                        })
 
