@@ -18,6 +18,7 @@
         self.expand = '';
         self.getValue = '';
         self.container = document.querySelector('.schedule');
+        self.resultNumber = document.querySelector('.schedule__arrow__text span');
         self.content = document.querySelector('.scheduleList__content');
         self.trigger = document.querySelectorAll('.schedule__trigger');
         self.schoolSelect = document.querySelector('.formSelectMultiple__select[name="school"]');
@@ -231,6 +232,8 @@
             self.content.innerHTML = '';
 
             self.content.appendChild(contentList);
+
+            self.resultNumber.innerHTML = response.lectures.length;
         };
 
         /**

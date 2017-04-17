@@ -12,10 +12,7 @@ mixin schedule
                     +e('div').arrow__wrapper
                         +e('div').arrow__icon
 
-                        +e('div').arrow__text
-                            +e('span')!= ""
-
-                            != "лекций"
+                        +e('div').arrow__text!= "<span></span> лекций"
 
                 +e('a').burger(href="#", class="schedule__trigger")
                     +e('div').burger__wrapper
