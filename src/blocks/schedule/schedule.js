@@ -16,10 +16,16 @@
         self.getSchool = '';
         self.getAuthor = '';
         self.expand = '';
+        self.getValue = '';
         self.container = document.querySelector('.schedule');
         self.content = document.querySelector('.scheduleList__content');
         self.schoolSelect = document.querySelector('.formSelectMultiple__select[name="school"]');
         self.authorSelect = document.querySelector('.formSelectMultiple__select[name="author"]');
+        self.dateFromInput = document.querySelector('.formInput__input[name="from"]');
+        self.dateToInput = document.querySelector('.formInput__input[name="to"]');
+        self.schoolSelectMultiple = document.querySelector('.formSelectMultiple.formSelectMultiple_type_school');
+        self.authorSelectMultiple = document.querySelector('.formSelectMultiple.formSelectMultiple_type_author');
+        self.selectMultiple = document.querySelectorAll('.formSelectMultiple');
         self.template = document.querySelector('#scheduleItem-template').innerHTML;
         self.monthNames = [
             'январь',
@@ -37,17 +43,13 @@
         ];
         self.dataList = '';
 
-        // self.dateFromInput = self.container.querySelector('.formInput__input[name="from"]');
-        // self.dateToInput = self.container.querySelector('.formInput__input[name="to"]');
-
-
         /**
          * Add event listeners
          */
         self.setupListener = function() {
-            // self.dateFromInput.addEventListener('change', self.getData);
-            // self.dateToInput.addEventListener('change', self.getData);
-            // self.placeSelect.addEventListener('change', self.getData);
+            self.dateFromInput.addEventListener('change', self.getData);
+            self.dateToInput.addEventListener('change', self.getData);
+            self.selectMultiple.forEach(function(item) {item.addEventListener('render', self.getData)});
         };
 
         /**
@@ -84,11 +86,48 @@
          * Get data from library according to filter values
          */
         self.getData = function() {
-            var dateFrom = '',//self.dateFromInput.value.replace(/-/g, '/'),
-                dateTo = '',//self.dateToInput.value.replace(/-/g, '/'),
-                place = '';//self.placeSelect.value ? parseInt(self.placeSelect.value) : '';
+            var dateFrom = self.dateFromInput.value.replace(/-/g, '/'),
+                dateTo = self.dateToInput.value.replace(/-/g, '/'),
+                school = self.getValue(self.schoolSelectMultiple),
+                author = self.getValue(self.authorSelectMultiple);
 
-            self.getSchedule(dateFrom, dateTo, place).then(function(response) {
+            self.getSchedule(dateFrom, dateTo, '').then(function(response) {
+                if (school.length > 0) {
+
+                    response.lectures = response.lectures.filter(function(item) {
+                        var result = false;
+
+                        school.forEach(function(schoolItem) {
+                            if (item.school.indexOf(parseInt(schoolItem.value)) !== -1) {
+
+                                result = true;
+
+                            }
+                        });
+
+                        return result;
+                    });
+
+                }
+
+                if (author.length > 0) {
+
+                    response.lectures = response.lectures.filter(function(item) {
+                        var result = false;
+
+                        author.forEach(function(authorItem) {
+                            if (item.author.indexOf(parseInt(authorItem.value)) !== -1) {
+
+                                result = true;
+
+                            }
+                        });
+
+                        return result;
+                    });
+
+                }
+
                 self.render(response);
             });
         };
@@ -170,6 +209,7 @@
             self.getSchool = app.modules.main.library.getSchool;
             self.getAuthor = app.modules.main.library.getAuthor;
             self.expand = app.modules.main.library.expand;
+            self.getValue = app.modules.formSelectMultiple.getValue;
         };
 
         /**

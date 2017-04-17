@@ -1,5 +1,5 @@
 mixin formSelectMultiple(data)
-    +b('div').formSelectMultiple(data-list="")
+    +b('div').formSelectMultiple(class="formSelectMultiple_type_" + data.mods, data-list="")
         +e('div').wrapper
             +e('div').header
                 +e('label').label(for= data.id)!= data.label

@@ -208,7 +208,7 @@
 
             }
 
-            container.dispatchEvent(new Event('change'));
+            container.dispatchEvent(new Event('render'));
         };
 
         /**
