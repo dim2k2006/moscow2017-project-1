@@ -251,5 +251,11 @@ $scheduleItem: '.scheduleItem';
             background-size: 10px 10px;
             border-radius: 50%;
         }
+
+        a {
+            @include respond-to('increased') {
+                text-decoration: underline;
+            }
+        }
     }
 }
