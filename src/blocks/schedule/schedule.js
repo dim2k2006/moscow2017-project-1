@@ -215,6 +215,19 @@
                 contentList.appendChild(element);
             });
 
+            if (response.lectures.length === 0) {
+
+                var element = document.createElement('li');
+
+                element.classList.add('scheduleList__item');
+
+                element.classList.add('scheduleList__item_state_empty');
+
+                element.innerHTML = 'По вашему запросу ничего не найдено.';
+
+                contentList.appendChild(element);
+            }
+
             self.content.innerHTML = '';
 
             self.content.appendChild(contentList);

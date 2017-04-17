@@ -28,6 +28,21 @@ $scheduleList: '.scheduleList';
         display: block;
         margin-bottom: 20px;
 
+        &#{$scheduleList}__item_state_empty {
+            font-weight: bold;
+            font-size: $font-size-huge;
+            line-height: $line-height-little;
+            color: darken($color-iron, 10%);
+
+            @include respond-to('increased') {
+                font-size: $font-size-largeplus;
+            }
+
+            @include respond-to('medium') {
+                font-size: $font-size-semilargeplus;
+            }
+        }
+
         @include f-last(1) {
             margin-bottom: 0;
         }
