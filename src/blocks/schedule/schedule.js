@@ -18,6 +18,8 @@
         self.expand = '';
         self.container = document.querySelector('.schedule');
         self.content = document.querySelector('.scheduleList__content');
+        self.schoolSelect = document.querySelector('.formSelectMultiple__select[name="school"]');
+        self.authorSelect = document.querySelector('.formSelectMultiple__select[name="author"]');
         self.template = document.querySelector('#scheduleItem-template').innerHTML;
         self.monthNames = [
             'январь',
@@ -35,7 +37,6 @@
         ];
         self.dataList = '';
 
-
         // self.dateFromInput = self.container.querySelector('.formInput__input[name="from"]');
         // self.dateToInput = self.container.querySelector('.formInput__input[name="to"]');
 
@@ -50,19 +51,34 @@
         };
 
         /**
-         * Setup place filter values
+         * Setup school filter values
          */
-        // self.setupPlaceFilter = function() {
-        //     self.getPlace().then(function(response) {
-        //         var html = '<option value=""></option>';
-        //
-        //         response.forEach(function(item) {
-        //             html += '<option value="'+ item.id +'">'+ item.title +'</option>';
-        //         });
-        //
-        //         self.placeSelect.innerHTML = html;
-        //     });
-        // };
+        self.setupSchoolFilter = function() {
+            self.getSchool().then(function(response) {
+                var html = '<option value=""></option>';
+
+                response.forEach(function(item) {
+                    html += '<option value="'+ item.id +'">'+ item.title +'</option>';
+                });
+
+                self.schoolSelect.innerHTML = html;
+            });
+        };
+
+        /**
+         * Setup author filter values
+         */
+        self.setupAuthorFilter = function() {
+            self.getAuthor().then(function(response) {
+                var html = '<option value=""></option>';
+
+                response.forEach(function(item) {
+                    html += '<option value="'+ item.id +'">'+ item.title +'</option>';
+                });
+
+                self.authorSelect.innerHTML = html;
+            });
+        };
 
         /**
          * Get data from library according to filter values
@@ -151,9 +167,8 @@
         self.importDefaults = function() {
             self.body = app.modules.main.body;
             self.getSchedule = app.modules.main.library.getSchedule;
-            // self.getPlace = app.modules.main.library.getPlace;
-            // self.getSchool = app.modules.main.library.getSchool;
-            // self.getAuthor = app.modules.main.library.getAuthor;
+            self.getSchool = app.modules.main.library.getSchool;
+            self.getAuthor = app.modules.main.library.getAuthor;
             self.expand = app.modules.main.library.expand;
         };
 
@@ -164,7 +179,8 @@
             if (self.container) {
 
                 self.importDefaults();
-                // self.setupPlaceFilter();
+                self.setupSchoolFilter();
+                self.setupAuthorFilter();
                 self.getData();
                 self.setupListener();
 
