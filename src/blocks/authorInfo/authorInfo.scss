@@ -11,6 +11,10 @@ $authorInfo: '.authorInfo';
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba($color-black, 0.1);
 
+    @include respond-to('medium') {
+        padding: 15px;
+    }
+
     &__wrapper {
         position: relative;
         display: block;
@@ -35,6 +39,12 @@ $authorInfo: '.authorInfo';
         border-radius: 50%;
         overflow: hidden;
 
+        @include respond-to('medium') {
+            width: 80px;
+            height: 80px;
+            margin-bottom: .8em;
+        }
+
         img {
             position: static;
             margin-bottom: 0;
@@ -47,6 +57,10 @@ $authorInfo: '.authorInfo';
         margin-bottom: .18em;
         font-size: $font-size-large;
         line-height: $line-height-prelittle;
+
+        @include respond-to('medium') {
+            font-size: $font-size-semilarge;
+        }
     }
 
     &__text {
@@ -54,6 +68,10 @@ $authorInfo: '.authorInfo';
         display: block;
         font-size: $font-size-premedium;
         line-height: $line-height-small;
+
+        @include respond-to('medium') {
+            font-size: $font-size-default;
+        }
 
         p {
             @include f-last(1) {
