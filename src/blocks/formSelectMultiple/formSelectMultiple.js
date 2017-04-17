@@ -30,10 +30,8 @@
             var container = this.closest('.formSelectMultiple'),
                 select = container.querySelector('.formSelectMultiple__select'),
                 selectedValue = select.value,
-                result = container.querySelector('.formSelectMultiple__list'),
                 initialList = container.dataset.list ? JSON.parse(container.dataset.list) : [],
                 options = [].slice.call(select.querySelectorAll('option')),
-                list = [],
                 selectList = [],
                 resultList = [];
 
@@ -65,16 +63,16 @@
 
                 if (value && text) {
 
-                    list.push({
+                    selectList.push({
                         value: value,
                         text: text
-                    })
+                    });
 
                 }
             });
 
-            selectList = list.filter(function(item) {
-                return item.value !== selectedValue
+            selectList = selectList.filter(function(item) {
+                return item.value !== selectedValue;
             });
 
             selectList.forEach(function(selectItem) {
@@ -89,8 +87,7 @@
 
             resultList = initialList;
 
-            self.renderSelect(select, selectList);
-            self.renderResult(result, resultList);
+            self.render(container, selectList, resultList);
         };
 
         /**
@@ -100,63 +97,80 @@
         self.handleClick = function(event) {
             event.preventDefault();
 
-            var container = this,
-                link = event.target,
-                selectedValue = parseInt(link.getAttribute('href')),
+            var container = this.closest('.formSelectMultiple'),
+                target = event.target,
+                selectedValue = target.getAttribute('href'),
                 initialList = container.dataset.list ? JSON.parse(container.dataset.list) : [],
                 links = [].slice.call(container.querySelectorAll('a')),
-                list = [],
-                selectList = initialList.slice(),
+                selectList = [],
                 resultList = [];
 
-            links.forEach(function(item) {
-                console.log(item);
-
+            resultList = links.map(function(item) {
                 var value = item.getAttribute('href'),
                     text = item.innerHTML;
 
-                if (value && text) {
-
-                    list.push({
-                        value: value,
-                        text: text
-                    })
-
+                return {
+                    value: value,
+                    text: text
                 }
+            }).filter(function(item) {
+                return item.value !== selectedValue;
             });
 
+            resultList.forEach(function(resultItem) {
+                initialList.forEach(function(initialItem, index) {
+                    if (initialItem.value === resultItem.value) {
 
+                        initialList.splice(index, 1);
 
+                    }
+                });
+            });
+
+            selectList = initialList;
+
+            self.render(container, selectList, resultList);
         };
 
         /**
-         * Render select content
+         * Render data for container
          * @param {Element} container
-         * @param {Object} data
+         * @param {Array} selectData
+         * @param {Array} resultData
          */
-        self.renderSelect = function(container, data) {
-            var html = '<option value=""></option>';
+        self.render = function(container, selectData, resultData) {
+            var selectContainer = container.querySelector('.formSelectMultiple__select'),
+                resultContainer = container.querySelector('.formSelectMultiple__list'),
+                selectHtml = '<option value=""></option>',
+                resultHtml = '';
 
-            data.forEach(function(item) {
-                html += '<option value="'+ item.value +'">'+ item.text +'</option>';
-            });
+            if (selectData.length > 0) {
 
-            container.innerHTML = html;
-        };
+                selectData.forEach(function(item) {
+                    selectHtml += '<option value="'+ item.value +'">'+ item.text +'</option>';
+                });
 
-        /**
-         * Render result content
-         * @param {Element} container
-         * @param {Object} data
-         */
-        self.renderResult = function(container, data) {
-            var html = '';
+            }
 
-            data.forEach(function(item) {
-                html += '<li class="formSelectMultiple__item"><a href="'+ item.value +'" class="formSelectMultiple__link">'+ item.text +'</a></li>';
-            });
+            if (resultData.length > 0) {
 
-            container.innerHTML = html;
+                resultData.forEach(function(item) {
+                    resultHtml += '<li class="formSelectMultiple__item"><a href="'+ item.value +'" class="formSelectMultiple__link">'+ item.text +'</a></li>';
+                });
+
+            }
+
+            if (selectContainer) {
+
+                selectContainer.innerHTML = selectHtml;
+
+            }
+
+            if (resultContainer) {
+
+                resultContainer.innerHTML = resultHtml;
+
+            }
         };
 
         /**
