@@ -12,8 +12,6 @@
 
         self.body = '';
         self.container = document.querySelector('.formSelectMultiple');
-        self.content = document.querySelector('.formSelectMultiple__content');
-        self.footer = document.querySelector('.formSelectMultiple__footer');
 
         /**
          * Add event listeners
