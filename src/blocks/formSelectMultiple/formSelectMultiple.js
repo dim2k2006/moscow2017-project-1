@@ -133,6 +133,33 @@
         };
 
         /**
+         * Return container selected value
+         * @param container
+         * @returns {Array}
+         */
+        self.getValue = function(container) {
+            var resultList = [];
+
+            if (container) {
+
+                var links = [].slice.call(container.querySelectorAll('a'));
+
+                resultList = links.map(function(item) {
+                    var value = item.getAttribute('href'),
+                        text = item.innerHTML;
+
+                    return {
+                        value: value,
+                        text: text
+                    }
+                });
+
+            }
+
+            return resultList;
+        };
+
+        /**
          * Render data for container
          * @param {Element} container
          * @param {Array} selectData
@@ -171,6 +198,8 @@
                 resultContainer.innerHTML = resultHtml;
 
             }
+
+            container.dispatchEvent(new Event('change'));
         };
 
         /**
