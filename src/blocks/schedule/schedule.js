@@ -165,7 +165,7 @@
                         itemPhoto = self.expand([item], {title: 'authors', data: response.authors}, 'photo'),
                         itemDescription = self.expand([item], {title: 'authors', data: response.authors}, 'description');
 
-                    author.push('<a class="scheduleItem__author__link modal_trigger" href="#author" title="Посмотреть дополнительную информацию" data-photo="'+ itemPhoto +'" data-title="'+ itemTitle +'" data-description="'+ itemDescription +'">'+ itemTitle +'</a>');
+                    author.push('<a class="scheduleItem__author__link modal_trigger" href="#author-modal" title="Посмотреть дополнительную информацию" data-photo="'+ itemPhoto +'" data-title="'+ itemTitle +'" data-description="'+ itemDescription +'">'+ itemTitle +'</a>');
                 });
 
                 if (item.isOver) {
