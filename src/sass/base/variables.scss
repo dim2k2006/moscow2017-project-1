@@ -15,6 +15,7 @@ $font-size-medium: 20px;
 $font-size-mediumplus: 22px;
 $font-size-prelarge: 24px;
 $font-size-semilarge: 26px;
+$font-size-semilargeplus: 30px;
 $font-size-large: 36px;
 $font-size-largeplus: 50px;
 $font-size-huge: 72px;
@@ -53,7 +54,7 @@ $breakpoints: (
     'small' : (max-width: 480px),
     'medium': (max-width: 640px),
     'prebig': (max-width: 767px),
-    'big': (max-width: 800px),
+    'big': (max-width: 860px),
     'intermediary': (max-width: 960px),
     'increased': (max-width: 1024px),
     'preincreased': (max-width: 1040px),

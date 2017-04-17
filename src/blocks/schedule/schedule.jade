@@ -4,6 +4,19 @@ include ../scheduleList/scheduleList
 mixin schedule
     +b('section').schedule
         +e('div').wrapper
+            +e('div').header
+                +e('div').title
+                    +e('h1')!= "Расписание <span>лекций</span>"
+
+                +e('a').burger(href="#")
+                    +e('div').burger__wrapper
+                        +e('div').burger__icon
+                            +e('div').burger__line
+
+                            +e('div').burger__line
+
+                            +e('div').burger__line
+
             +e('div').content
                 +e('div').col(class="schedule__col_1")
                     +scheduleFilter

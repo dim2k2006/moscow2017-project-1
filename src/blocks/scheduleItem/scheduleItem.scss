@@ -36,6 +36,14 @@ $scheduleItem: '.scheduleItem';
             left: 200px;
             transform: translateY(-50%);
             background: rgba($color-iron, .5);
+
+            @include respond-to('increased') {
+                left: 150px;
+            }
+
+            @include respond-to('medium') {
+                display: none;
+            }
         }
     }
 
@@ -45,12 +53,38 @@ $scheduleItem: '.scheduleItem';
         float: left;
         padding: 30px 35px;
 
+        @include respond-to('medium') {
+            padding: 15px;
+        }
+
         &#{$scheduleItem}__col_1 {
             width: 200px;
+            padding-left: 0;
+            padding-right: 0;
+
+            @include respond-to('increased') {
+                width: 150px;
+            }
+
+            @include respond-to('medium') {
+                width: 100%;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-bottom: 0;
+            }
         }
 
         &#{$scheduleItem}__col_2 {
             width: calc(100% - 200px);
+
+            @include respond-to('increased') {
+                width: calc(100% - 150px);
+            }
+
+            @include respond-to('medium') {
+                width: 100%;
+                padding-top: 10px;
+            }
         }
     }
 
@@ -58,6 +92,11 @@ $scheduleItem: '.scheduleItem';
         position: relative;
         display: block;
         text-align: center;
+        @include clearfix;
+
+        @include respond-to('medium') {
+            text-align: left;
+        }
     }
 
     &__day {
@@ -68,6 +107,18 @@ $scheduleItem: '.scheduleItem';
         font-size: $font-size-extrahuge;
         line-height: $line-height-prelittle;
         color: rgba($color-black, .1);
+
+        @include respond-to('increased') {
+            font-size: $font-size-huge;
+        }
+
+        @include respond-to('medium') {
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 0;
+            font-size: $font-size-semilargeplus;
+            color: rgba($color-black, 1);
+        }
     }
 
     &__month {
@@ -77,6 +128,16 @@ $scheduleItem: '.scheduleItem';
         font-size: $font-size-semilarge;
         line-height: $line-height-prelittle;
         color: rgba($color-black, .2);
+
+        @include respond-to('increased') {
+            font-size: $font-size-premedium;
+        }
+
+        @include respond-to('medium') {
+            margin-bottom: .3em;
+            font-size: $font-size-extrasmall;
+            color: rgba($color-black, 1);
+        }
     }
 
     &__time {
@@ -85,6 +146,11 @@ $scheduleItem: '.scheduleItem';
         font-size: $font-size-default;
         line-height: $line-height-prelittle;
         color: rgba($color-black, .3);
+
+        @include respond-to('medium') {
+            font-size: $font-size-extrasmall;
+            color: rgba($color-black, 1);
+        }
     }
 
     &__title {
@@ -94,6 +160,10 @@ $scheduleItem: '.scheduleItem';
         font-size: $font-size-mediumplus;
         line-height: $line-height-presmall;
         color: $color-cobalt;
+
+        @include respond-to('medium') {
+            font-size: $font-size-premedium;
+        }
     }
 
     &__school {
@@ -103,6 +173,11 @@ $scheduleItem: '.scheduleItem';
         font-size: $font-size-smaller;
         line-height: $line-height-prelittle;
         @include clearfix;
+
+        @include respond-to('medium') {
+            margin-bottom: 0;
+            font-size: $font-size-smallest;
+        }
     }
 
     &__school__item {
@@ -143,6 +218,12 @@ $scheduleItem: '.scheduleItem';
 
         span {
             opacity: .5;
+        }
+
+        a {
+            @include respond-to('increased') {
+                text-decoration: underline;
+            }
         }
     }
 
