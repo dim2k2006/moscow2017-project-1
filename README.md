@@ -26,4 +26,24 @@
 
 ## Описание
 
+Для отображения расписания лекций используется библиотеку с данными из [Задания 2](https://github.com/dim2k2006/moscow2017-project-2).
+ 
+Данная бибилиотека устанавливается как bower зависимость:
+
+```json
+{
+  "name": "shri-2017-project-1",
+  "version": "0.1.0",
+  "dependencies": {
+    "normalize.css": "~3.0.3",
+    "shri-2017-project-2": "git@github.com:dim2k2006/moscow2017-project-2.git"
+  }
+}
+```
+
+После сборки проекта библиотека подключается как вендорный скрипт:
+
+```html
+<script src="scripts/vendor.min.js"></script>
+```
 
