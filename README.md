@@ -47,3 +47,5 @@
 <script src="scripts/vendor.min.js"></script>
 ```
 
+Далее используя встроенный метод библиотеки [getSchedule](https://github.com/dim2k2006/moscow2017-project-2#getscheduledatefrom-dateto-placeid) скрипт получает массив данных для вывода. 
+
