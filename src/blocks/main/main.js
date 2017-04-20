@@ -23,6 +23,25 @@ var initApp = function() {
         };
 
         /**
+         * Init polyFills
+         */
+        self.initPolyfills = function() {
+            if (!Element.prototype.closest) {
+
+                Element.prototype.closest = function(css) {
+                    var node = this;
+
+                    while (node) {
+                        if (node.matches(css)) return node;
+                        else node = node.parentElement;
+                    }
+                    return null;
+                };
+
+            }
+        };
+
+        /**
          * Init all modules in $.modules
          */
         self.initModules = function() {
@@ -46,6 +65,7 @@ var initApp = function() {
          */
         self.init = function() {
             self.initLibrary();
+            self.initPolyfills();
             self.initModules();
         };
     };

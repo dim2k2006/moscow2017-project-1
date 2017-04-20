@@ -20,14 +20,14 @@
         self.container = document.querySelector('.schedule');
         self.resultNumber = document.querySelector('.schedule__arrow__text span');
         self.content = document.querySelector('.scheduleList__content');
-        self.trigger = document.querySelectorAll('.schedule__trigger');
+        self.trigger = [].slice.call(document.querySelectorAll('.schedule__trigger'));
         self.schoolSelect = document.querySelector('.formSelectMultiple__select[name="school"]');
         self.authorSelect = document.querySelector('.formSelectMultiple__select[name="author"]');
         self.dateFromInput = document.querySelector('.formInput__input[name="from"]');
         self.dateToInput = document.querySelector('.formInput__input[name="to"]');
         self.schoolSelectMultiple = document.querySelector('.formSelectMultiple.formSelectMultiple_type_school');
         self.authorSelectMultiple = document.querySelector('.formSelectMultiple.formSelectMultiple_type_author');
-        self.selectMultiple = document.querySelectorAll('.formSelectMultiple');
+        self.selectMultiple = [].slice.call(document.querySelectorAll('.formSelectMultiple'));
         self.template = document.querySelector('#scheduleItem-template').innerHTML;
         self.monthNames = [
             'январь',
@@ -51,7 +51,7 @@
         self.setupListener = function() {
             self.dateFromInput.addEventListener('change', self.getData);
             self.dateToInput.addEventListener('change', self.getData);
-            self.selectMultiple.forEach(function(item) {item.addEventListener('render', self.getData)});
+            self.selectMultiple.forEach(function(item) {item.addEventListener('render', self.getData);});
             self.trigger.forEach(function(item) {item.addEventListener('click', self.showFilter)});
         };
 
