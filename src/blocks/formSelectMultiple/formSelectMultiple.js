@@ -23,8 +23,9 @@
 
         /**
          * Handle change event
+         * @param {Object} event
          */
-        self.handleChange = function() {
+        self.handleChange = function(event) {
             var target = event.target;
 
             if (target.classList.contains('formSelectMultiple__select')) {
